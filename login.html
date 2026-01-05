@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Admin</title>
+  <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+  <!-- Tombol kembali -->
+  <a href="index.html" class="btn-back">← Kembali</a>
+
+  <div class="container">
+    <form class="login-box" onsubmit="return loginAdmin()">
+      <h2>Login Admin</h2>
+
+      <div class="input-group">
+        <label>Username</label>
+        <input id="username" required>
+      </div>
+
+      <div class="input-group">
+        <label>Password</label>
+        <input id="password" type="password" required>
+      </div>
+
+      <button class="btn-login">Masuk</button>
+
+      <div class="description-text">
+        Jika lupa password, hubungi admin kelurahan.
+      </div>
+    </form>
+  </div>
+
+  <script src="js/login.js"></script>
+</body>
+</html>

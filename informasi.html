@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Informasi Kegiatan</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="navbar-logo">
+    <img src="img/logo kelurahan.jpg">
+    <span>Kelurahan Lagoa</span>
+  </a>
+
+  <div class="navbar-nav">
+    <a href="index.html">Beranda</a>
+    <a href="informasi.html">Informasi</a>
+    <a href="login.html" id="loginLink">Masuk</a>
+  </div>
+</nav>
+
+<section class="info-container">
+
+  <!-- SEARCH -->
+  <div class="info-search">
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Cari kegiatan..."
+      onkeyup="applyFilters()"
+    >
+  </div>
+
+  <!-- FILTER & SORT -->
+  <div class="filter-group">
+    <select id="sortSelect" onchange="applyFilters()">
+      <option value="newest">Terbaru</option>
+      <option value="oldest">Terlama</option>
+    </select>
+
+    <input
+      type="date"
+      id="filterDate"
+      onchange="applyFilters()"
+    >
+
+    <input
+      type="text"
+      id="filterLocation"
+      placeholder="Filter lokasi"
+      onkeyup="applyFilters()"
+    >
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div id="adminPanel" class="admin-panel">
+    <h3>Tambah Kegiatan</h3>
+
+    <input id="judul" placeholder="Judul">
+    <input id="tanggal" type="date">
+    <input id="waktu" placeholder="Waktu">
+    <input id="lokasi" placeholder="Lokasi">
+    <textarea id="deskripsi" placeholder="Deskripsi"></textarea>
+    <input id="image" type="file" accept="image/*">
+
+    <!-- BUTTON WAJIB CLASS -->
+    <button class="btn-save" onclick="tambahKegiatan()">Simpan</button>
+  </div>
+
+  <!-- GRID -->
+  <div id="infoGrid" class="info-grid"></div>
+
+</section>
+
+<script src="js/script.js"></script>
+<script src="js/informasi.js"></script>
+<script>feather.replace()</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- Penanda admin -->
+  <div class="admin-badge">Mode Admin Aktif</div>
+
+  <nav class="navbar">
+    <a class="navbar-logo"><span>Admin Kelurahan</span></a>
+    <div class="navbar-nav">
+      <a href="index.html">Lihat Website</a>
+      <a href="#" onclick="logout()">Logout</a>
+    </div>
+  </nav>
+
+  <section class="menu" style="margin-top:8rem">
+    <h2>Kelola Kegiatan</h2>
+
+    <!-- Form hanya simulasi -->
+    <form class="login-box" style="max-width:500px">
+      <div class="input-group">
+        <label>Nama Kegiatan</label>
+        <input>
+      </div>
+
+      <div class="input-group">
+        <label>Tanggal</label>
+        <input type="date">
+      </div>
+
+      <div class="input-group">
+        <label>Lokasi</label>
+        <input>
+      </div>
+
+      <button class="btn-login">Simpan (Simulasi)</button>
+    </form>
+  </section>
+
+  <script>
+    // Cegah akses tanpa login
+    if (!localStorage.getItem("isAdmin")) {
+      window.location.href = "login.html";
+    }
+
+    function logout() {
+      localStorage.removeItem("isAdmin");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
