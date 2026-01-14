@@ -82,7 +82,7 @@ project-root/
 1. Clone repository ini:
 
    ```bash
-   git clone https://github.com/username/digitalisasi-kelurahan.git
+   git clone https://github.com/N0tFuhny/digitalisasi-kelurahan.git
    ```
 2. Buka file `index.html` menggunakan browser
 3. Login sebagai admin melalui `login.html`
