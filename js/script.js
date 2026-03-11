@@ -2,12 +2,33 @@ const hamburger = document.querySelector("#hamburger-menu");
 const navbarNav = document.querySelector(".navbar-nav");
 
 if (hamburger) {
-  hamburger.onclick = () => navbarNav.classList.toggle("active");
+  hamburger.onclick = (e) => {
+    e.preventDefault();
+    navbarNav.classList.toggle("active");
+  }
 }
 
+// Global click to close hamburger
+document.addEventListener('click', (e) => {
+  if (hamburger && !hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+    navbarNav.classList.remove('active');
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Always run feather icons
+  if (typeof feather !== 'undefined') feather.replace();
+
   const isAdmin = localStorage.getItem("isAdmin") === "true";
   const loginLink = document.getElementById("loginLink");
+
+  // Admin badge for all pages if logged in
+  if (isAdmin && !document.querySelector('.admin-badge')) {
+    const badge = document.createElement('div');
+    badge.className = 'admin-badge';
+    badge.textContent = 'Mode Admin Aktif';
+    document.body.prepend(badge);
+  }
 
   // Load Config Data (if KELURAHAN_CONFIG is defined in HTML)
   if (typeof KELURAHAN_CONFIG !== "undefined") {

@@ -38,13 +38,17 @@ function tambahKegiatan() {
   const deskripsiInput = document.getElementById("deskripsi");
   const imageInput = document.getElementById("image");
 
-  if (!judulInput.value || !tanggalInput.value) {
+  if (!judulInput.value.trim() || !tanggalInput.value.trim()) {
     alert("Judul dan Tanggal wajib diisi!");
     return;
   }
 
   const file = imageInput.files[0];
   if (file) {
+    if (file.size > 1024 * 1024) { // 1MB limit for localStorage
+      alert("Ukuran gambar terlalu besar (maksimal 1MB).");
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       saveData(reader.result, judulInput, tanggalInput, waktuInput, lokasiInput, deskripsiInput);
@@ -58,8 +62,8 @@ function tambahKegiatan() {
 
 function saveData(imgData, j, t, w, l, d) {
   kegiatan.push({
-    id: Date.now().toString(),
-    judul: j.value,
+    id: Date.now().toString() + "_" + Math.random().toString(36).substr(2, 5),
+    judul: j.value.trim(),
     tanggal: t.value,
     waktu: w.value,
     lokasi: l.value,
@@ -123,13 +127,17 @@ function tambahBerita() {
   const deskripsiInput = document.getElementById("deskripsiBerita");
   const imageInput = document.getElementById("imageBerita");
 
-  if (!judulInput.value || !tanggalInput.value || !deskripsiInput.value) {
+  if (!judulInput.value.trim() || !tanggalInput.value.trim() || !deskripsiInput.value.trim()) {
     alert("Judul, Tanggal, dan Deskripsi wajib diisi!");
     return;
   }
 
   const file = imageInput.files[0];
   if (file) {
+    if (file.size > 1024 * 1024) { // 1MB limit for localStorage
+      alert("Ukuran gambar terlalu besar (maksimal 1MB).");
+      return;
+    }
     const reader = new FileReader();
     reader.onload = () => {
       saveBerita(reader.result, judulInput, tanggalInput, deskripsiInput);
@@ -143,8 +151,8 @@ function tambahBerita() {
 
 function saveBerita(imgData, j, t, d) {
   beritaList.push({
-    id: Date.now().toString() + "_b",
-    judul: j.value,
+    id: Date.now().toString() + "_b_" + Math.random().toString(36).substr(2, 5),
+    judul: j.value.trim(),
     tanggal: t.value,
     deskripsi: d.value,
     image: imgData

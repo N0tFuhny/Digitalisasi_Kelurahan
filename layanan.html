@@ -14,80 +14,7 @@
 
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/feather-icons"></script>
-    <style>
-        /* Additional styles specifically for layanan cards if not in style.css */
-        .layanan-section {
-            padding: 8rem 7% 1.4rem;
-            text-align: center;
-        }
 
-        .layanan-section h2 {
-            font-size: 2.6rem;
-            color: #444;
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-        }
-
-        .layanan-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .layanan-card {
-            background: var(--bg);
-            border: 1px solid #666;
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: left;
-            transition: all 0.3s ease;
-        }
-
-        .layanan-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary);
-        }
-
-        .layanan-card i {
-            color: var(--primary);
-            width: 32px;
-            height: 32px;
-            margin-bottom: 1rem;
-        }
-
-        .layanan-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #444;
-        }
-
-        .layanan-card p {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .layanan-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .layanan-card ul li {
-            font-size: 1rem;
-            color: var(--text-dark);
-            display: flex;
-            align-items: start;
-            margin-bottom: 0.5rem;
-        }
-
-        .layanan-card ul li::before {
-            content: "✓";
-            color: var(--primary);
-            margin-right: 0.8rem;
-            font-weight: bold;
-        }
-    </style>
 </head>
 
 <body>
@@ -114,12 +41,20 @@
         </div>
     </section>
 
-    <!-- footer star -->
+    <!-- footer -->
     <footer>
+        <div class="social">
+            <a href="#" id="link-ig"><i data-feather="instagram"></i></a>
+            <a href="#" id="link-tw"><i data-feather="twitter"></i></a>
+            <a href="#" id="link-fb"><i data-feather="facebook"></i></a>
+        </div>
         <div class="links">
             <a href="index.html">Beranda</a>
+            <a href="index.html#about">Profil</a>
+            <a href="berita.html">Berita</a>
             <a href="informasi.html">Informasi</a>
             <a href="layanan.html">Layanan</a>
+            <a href="index.html#kontak">Kontak</a>
         </div>
         <div class="credit">
             <p>created by <a href="">. |&Fuhny</a>. | &copy; 2025.</p>
@@ -129,7 +64,6 @@
     <script src="js/config.js"></script>
     <script src="js/script.js"></script>
     <script>
-        feather.replace()
 
         // Render layanan list from config
         document.addEventListener("DOMContentLoaded", () => {

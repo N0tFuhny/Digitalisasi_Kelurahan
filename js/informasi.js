@@ -48,7 +48,8 @@ function applyFilters() {
 function highlight(text) {
   const q = searchInput.value;
   if (!q) return text;
-  return text.replace(new RegExp(q, "gi"), m => `<mark>${m}</mark>`);
+  const escapedQ = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return text.replace(new RegExp(escapedQ, "gi"), m => `<mark>${m}</mark>`);
 }
 
 applyFilters();

@@ -24,7 +24,10 @@ function renderBerita() {
 
         // Highlight search term
         let finalJudul = b.judul;
-        if (q) finalJudul = b.judul.replace(new RegExp(q, "gi"), m => `<mark style="background:#ffe08a; padding:0 2px;">${m}</mark>`);
+        if (q) {
+            const escapedQ = q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+            finalJudul = b.judul.replace(new RegExp(escapedQ, "gi"), m => `<mark style="background:#ffe08a; padding:0 2px;">${m}</mark>`);
+        }
 
         card.innerHTML = `
       <img src="${b.image || 'img/gedung kelurahan.jpg'}">

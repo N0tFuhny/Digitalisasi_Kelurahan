@@ -1,52 +1,89 @@
 /* =========================
-   GLOBAL RESET
+   LOGIN PAGE — PREMIUM REDESIGN
 ========================= */
 
-* {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary:      #c5a972;
+  --primary-dark: #a88b58;
+  --text-dark:    #1e1c1a;
+  --text-mid:     #555;
+  --text-muted:   #999;
+  --border:       #e0dbd2;
+  --bg:           #f8f7f4;
+}
+
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
 }
-
-/* =========================
-   BODY
-========================= */
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-family: "Inter", sans-serif;
   min-height: 100vh;
-  background: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1815 0%, #2e2a25 50%, #1a1815 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background circles */
+body::before,
+body::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(197,169,114,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+body::before {
+  width: 600px;
+  height: 600px;
+  top: -200px;
+  right: -200px;
+}
+
+body::after {
+  width: 400px;
+  height: 400px;
+  bottom: -150px;
+  left: -150px;
 }
 
 /* =========================
-   BACK BUTTON (TOP RIGHT)
+   BACK BUTTON
 ========================= */
 
 .btn-back {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 1.4rem;
+  left: 1.4rem;
   z-index: 999;
-
-  text-decoration: none;
-  font-size: 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.65);
+  font-size: 0.88rem;
   font-weight: 500;
-
-  color: #ffffff;
-  background-color: #444;
-
-  padding: 8px 14px;
-  border-radius: 6px;
-
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  font-family: inherit;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  transition: color 0.2s, background 0.2s, transform 0.15s;
+  backdrop-filter: blur(8px);
 }
 
 .btn-back:hover {
-  background-color: #000;
-  transform: translateY(-1px);
+  color: var(--primary);
+  background: rgba(197,169,114,0.12);
+  transform: translateX(-2px);
 }
 
 /* =========================
@@ -55,7 +92,10 @@ body {
 
 .container {
   width: 100%;
-  max-width: 400px;
+  max-width: 420px;
+  padding: 1.5rem;
+  position: relative;
+  z-index: 2;
 }
 
 /* =========================
@@ -63,15 +103,40 @@ body {
 ========================= */
 
 .login-box {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background: rgba(255,255,255,0.97);
+  padding: 2.8rem 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.1);
+  animation: slideUp 0.55s cubic-bezier(0.25, 0.8, 0.25, 1) both;
 }
 
 .login-box h2 {
   text-align: center;
-  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.3px;
+}
+
+.login-box .subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 2rem;
+}
+
+/* Logo accent */
+.login-box .login-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  border-radius: 16px;
+  margin: 0 auto 1.5rem;
+  box-shadow: 0 8px 20px rgba(197,169,114,0.35);
 }
 
 /* =========================
@@ -79,20 +144,36 @@ body {
 ========================= */
 
 .input-group {
-  margin-bottom: 1rem;
+  margin-bottom: 1.1rem;
 }
 
 .input-group label {
   display: block;
-  margin-bottom: 0.3rem;
-  font-size: 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  margin-bottom: 0.45rem;
 }
 
 .input-group input {
   width: 100%;
-  padding: 0.7rem;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  border: 1.5px solid var(--border);
+  background: var(--bg);
+  color: var(--text-dark);
+  font-size: 0.97rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.input-group input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(197,169,114,0.15);
+  background: #fff;
 }
 
 /* =========================
@@ -101,16 +182,30 @@ body {
 
 .btn-login {
   width: 100%;
-  padding: 0.8rem;
-  background: #444;
-  color: white;
+  padding: 0.95rem;
+  margin-top: 0.6rem;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: #fff;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
   cursor: pointer;
+  letter-spacing: 0.3px;
+  box-shadow: 0 6px 20px rgba(197,169,114,0.4);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s;
 }
 
 .btn-login:hover {
-  background: #222;
+  background: linear-gradient(135deg, var(--primary-dark), #8c7240);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(197,169,114,0.45);
+}
+
+.btn-login:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(197,169,114,0.3);
 }
 
 /* =========================
@@ -118,9 +213,26 @@ body {
 ========================= */
 
 .description-text {
-  margin-top: 1rem;
-  font-size: 12px;
-  color: #666;
+  margin-top: 1.4rem;
+  font-size: 0.78rem;
+  color: var(--text-muted);
   text-align: center;
-  line-height: 1.4;
+  line-height: 1.5;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
