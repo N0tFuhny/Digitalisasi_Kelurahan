@@ -1,9 +1,10 @@
+// Check from config.js
 function loginAdmin() {
-  if (username.value === "admin" && password.value === "admin123") {
+  if (username.value === KELURAHAN_CONFIG.admin.username && password.value === KELURAHAN_CONFIG.admin.password) {
     localStorage.setItem("isAdmin", "true");
-    location.href = "informasi.html";
+    location.href = "admin-dashboard.html";
   } else {
-    alert("Login gagal");
+    alert("Login gagal. Periksa username dan password.");
   }
   return false;
 }

@@ -1,9 +1,80 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .admin-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      padding: 2rem 7%;
+      margin-top: 6rem;
+    }
+
+    .admin-form-container {
+      background: var(--bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid #666;
+    }
+
+    .admin-form-container input,
+    .admin-form-container textarea {
+      width: 100%;
+      padding: 0.8rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: #fff;
+      color: #111;
+    }
+
+    .admin-card {
+      background: var(--bg);
+      border: 1px solid #666;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .admin-card img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 1rem;
+    }
+
+    .admin-card-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .admin-card-info h4 {
+      color: #fff;
+      margin-bottom: 0.5rem;
+    }
+
+    .admin-card-info p {
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    .btn-delete {
+      background: var(--primary);
+      padding: 0.5rem 1rem;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 
 <body>
@@ -11,40 +82,66 @@
   <div class="admin-badge">Mode Admin Aktif</div>
 
   <nav class="navbar">
-    <a class="navbar-logo"><span>Admin Kelurahan</span></a>
+    <a class="navbar-logo"><span>Admin Panel</span></a>
     <div class="navbar-nav">
       <a href="index.html">Lihat Website</a>
       <a href="#" onclick="logout()">Logout</a>
     </div>
   </nav>
 
-  <section class="menu" style="margin-top:8rem">
-    <h2>Kelola Kegiatan</h2>
+  <section class="admin-grid">
+    <!-- KEGIATAN -->
+    <div class="admin-form-container">
+      <h2>Tambah Kegiatan Baru</h2>
+      <br>
+      <input id="judul" placeholder="Judul Kegiatan">
+      <input id="tanggal" type="date">
+      <input id="waktu" placeholder="Waktu (e.g. 09:00 - 12:00)">
+      <input id="lokasi" placeholder="Lokasi">
+      <textarea id="deskripsi" placeholder="Deskripsi Kegiatan" rows="4"></textarea>
+      <label style="color:#fff; display:block; margin-bottom: 0.5rem;">Upload Gambar:</label>
+      <input id="image" type="file" accept="image/*">
+      <button class="btn-save" style="width:100%; padding:1rem;" onclick="tambahKegiatan()">Simpan Kegiatan</button>
+    </div>
 
-    <!-- Form hanya simulasi -->
-    <form class="login-box" style="max-width:500px">
-      <div class="input-group">
-        <label>Nama Kegiatan</label>
-        <input>
+    <div>
+      <h2 style="color:#fff; margin-bottom: 1rem;">Daftar Kegiatan</h2>
+      <div id="adminKegiatanList">
+        <!-- Diisi oleh JS -->
       </div>
+    </div>
 
-      <div class="input-group">
-        <label>Tanggal</label>
-        <input type="date">
-      </div>
-
-      <div class="input-group">
-        <label>Lokasi</label>
-        <input>
-      </div>
-
-      <button class="btn-login">Simpan (Simulasi)</button>
-    </form>
   </section>
 
+  <hr style="border: 0; border-top: 1px solid #444; margin: 2rem 7%;">
+
+  <!-- BERITA SECTION -->
+  <section class="admin-grid" style="margin-top: 0;">
+    <div class="admin-form-container">
+      <h2>Tambah Berita Terbaru</h2>
+      <br>
+      <input id="judulBerita" placeholder="Judul Berita">
+      <input id="tanggalBerita" type="date">
+      <textarea id="deskripsiBerita" placeholder="Isi Konten Berita" rows="6"></textarea>
+      <label style="color:#fff; display:block; margin-bottom: 0.5rem;">Upload Gambar Cover:</label>
+      <input id="imageBerita" type="file" accept="image/*">
+      <button class="btn-save" style="width:100%; padding:1rem; background-color:#826a3c;"
+        onclick="tambahBerita()">Simpan Berita</button>
+    </div>
+
+    <div>
+      <h2 style="color:#fff; margin-bottom: 1rem;">Daftar Berita</h2>
+      <div id="adminBeritaList">
+        <!-- Diisi oleh JS -->
+      </div>
+    </div>
+  </section>
+
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
   <script>
     // Cegah akses tanpa login
-    if (!localStorage.getItem("isAdmin")) {
+    if (localStorage.getItem("isAdmin") !== "true") {
       window.location.href = "login.html";
     }
 
@@ -54,4 +151,5 @@
     }
   </script>
 </body>
+
 </html>

@@ -1,13 +1,4 @@
-const isAdmin = localStorage.getItem("isAdmin") === "true";
-
-if (isAdmin) {
-  document.body.classList.add("admin-mode");
-}
-
-const adminPanel = document.getElementById("adminPanel");
-if (!isAdmin && adminPanel) adminPanel.remove();
-
-
+// Check login script.js already manages navbar view
 let kegiatan = JSON.parse(localStorage.getItem("kegiatan")) || [];
 
 function render(list) {
@@ -21,17 +12,11 @@ function render(list) {
     card.dataset.location = k.lokasi.toLowerCase();
 
     card.innerHTML = `
-      <img src="${k.image}">
+      <img src="${k.image || 'img/kegiatan/1.jpg'}">
       <div class="content">
         <h3>${highlight(k.judul)}</h3>
-        <small>${k.tanggal} | ${k.waktu} | ${k.lokasi}</small>
+        <small>${k.tanggal} | ${k.waktu || ''} | ${k.lokasi}</small>
         <p>${k.deskripsi}</p>
-
-        ${
-          isAdmin
-            ? `<button class="btn-delete" onclick="hapus(${i})">Hapus</button>`
-            : ""
-        }
       </div>
     `;
 
@@ -64,35 +49,6 @@ function highlight(text) {
   const q = searchInput.value;
   if (!q) return text;
   return text.replace(new RegExp(q, "gi"), m => `<mark>${m}</mark>`);
-}
-
-function tambahKegiatan() {
-  const file = image.files[0];
-  const reader = new FileReader();
-
-  reader.onload = () => {
-    kegiatan.push({
-      judul: judul.value,
-      tanggal: tanggal.value,
-      waktu: waktu.value,
-      lokasi: lokasi.value,
-      deskripsi: deskripsi.value,
-      image: reader.result
-    });
-
-    localStorage.setItem("kegiatan", JSON.stringify(kegiatan));
-    applyFilters();
-  };
-
-  reader.readAsDataURL(file);
-}
-
-function hapus(i) {
-  if (confirm("Hapus kegiatan?")) {
-    kegiatan.splice(i, 1);
-    localStorage.setItem("kegiatan", JSON.stringify(kegiatan));
-    applyFilters();
-  }
 }
 
 applyFilters();

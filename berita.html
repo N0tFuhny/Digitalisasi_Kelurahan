@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita & Pengumuman</title>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Kedebideri:wght@400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .berita-header {
+            padding: 8rem 7% 2rem;
+            text-align: center;
+        }
+
+        .berita-header h2 {
+            font-size: 2.6rem;
+            color: #444;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .berita-header p {
+            color: var(--text-dark);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .berita-search {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .berita-search input {
+            padding: 0.8rem 1.2rem;
+            width: 300px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 1rem;
+        }
+
+        .berita-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            padding: 0 7%;
+            margin-bottom: 5rem;
+        }
+
+        .berita-card {
+            background: var(--bg);
+            border: 1px solid #666;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.2s;
+        }
+
+        .berita-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .berita-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .berita-card-content {
+            padding: 1.5rem;
+        }
+
+        .berita-card-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: #444;
+        }
+
+        .berita-meta {
+            font-size: 0.9rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .berita-card-content p {
+            font-size: 1rem;
+            color: var(--text-dark);
+            line-height: 1.6;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .empty-state {
+            text-align: center;
+            grid-column: 1 / -1;
+            color: var(--text-dark);
+            font-style: italic;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- navbar start -->
+    <nav class="navbar">
+        <a href="index.html" class="navbar-logo">
+            <img src="" alt="logo">
+            <span>Template Kelurahan</span>
+        </a>
+
+        <div class="navbar-nav">
+            <a href="index.html">Beranda</a>
+            <a href="index.html#about">Profil</a>
+            <a href="berita.html">Berita</a>
+            <a href="informasi.html">Informasi</a>
+            <a href="layanan.html">Layanan</a>
+            <a href="login.html" id="loginLink">Masuk</a>
+        </div>
+    </nav>
+
+    <section class="berita-header">
+        <h2>Berita Utama Kelurahan</h2>
+        <p>Ikuti berita terbaru, pengumuman, dan informasi penting lainnya yang terjadi di lingkungan kelurahan.</p>
+
+        <div class="berita-search">
+            <input type="text" id="searchInputBerita" placeholder="Cari berita..." onkeyup="renderBerita()">
+        </div>
+    </section>
+
+    <div class="berita-grid" id="beritaGrid">
+        <!-- Diisi oleh javascript berita.js -->
+    </div>
+
+    <!-- footer star -->
+    <footer>
+        <div class="social">
+            <a href="#" id="link-ig"><i data-feather="instagram"></i></a>
+            <a href="#" id="link-tw"><i data-feather="twitter"></i></a>
+            <a href="#" id="link-fb"><i data-feather="facebook"></i></a>
+        </div>
+        <div class="links">
+            <a href="index.html">Beranda</a>
+            <a href="index.html#about">Profil</a>
+            <a href="berita.html">Berita</a>
+            <a href="informasi.html">Informasi</a>
+            <a href="layanan.html">Layanan</a>
+        </div>
+        <div class="credit">
+            <p>created by <a href="">. |&Fuhny</a>. | &copy; 2025.</p>
+        </div>
+    </footer>
+
+    <script src="js/config.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/berita.js"></script>
+    <script>
+        feather.replace()
+    </script>
+</body>
+
+</html>

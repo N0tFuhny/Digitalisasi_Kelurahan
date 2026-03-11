@@ -1,60 +1,172 @@
-const isAdmin = localStorage.getItem("isAdmin") === "true";
-const adminPanel = document.getElementById("adminPanel");
-
-if (isAdmin && adminPanel) adminPanel.style.display = "block";
-
 let kegiatan = JSON.parse(localStorage.getItem("kegiatan")) || [];
+let beritaList = JSON.parse(localStorage.getItem("berita")) || [];
 
 function renderKegiatan() {
-  const grid = document.getElementById("infoGrid");
-  grid.innerHTML = "";
+  const listContainer = document.getElementById("adminKegiatanList");
+  if (!listContainer) return;
+  listContainer.innerHTML = "";
+
+  if (kegiatan.length === 0) {
+    listContainer.innerHTML = "<p style='color:#ccc'>Belum ada kegiatan.</p>";
+    return;
+  }
 
   kegiatan.forEach((item, i) => {
     const card = document.createElement("div");
-
-    card.className = "info-card";
-    card.dataset.date = item.tanggal;
-    card.dataset.lokasi = item.lokasi.toLowerCase();
+    card.className = "admin-card";
 
     card.innerHTML = `
-      <img src="${item.image}">
-      <div class="content">
-        <h3>${item.judul}</h3>
-        <small>${item.tanggal} | ${item.lokasi}</small>
-        <p>${item.deskripsi}</p>
-        ${isAdmin ? `<button onclick="hapus(${i})">Hapus</button>` : ""}
+      <div style="display:flex; align-items:center;">
+        <img src="${item.image || 'img/kegiatan/1.jpg'}">
+        <div class="admin-card-info">
+          <h4>${item.judul}</h4>
+          <p>${item.tanggal} | ${item.waktu || ''} | ${item.lokasi}</p>
+        </div>
       </div>
+      <button class="btn-delete" onclick="hapus('${item.id ? item.id : i}')">Hapus</button>
     `;
 
-    grid.appendChild(card);
+    listContainer.appendChild(card);
   });
 }
 
 function tambahKegiatan() {
-  const reader = new FileReader();
-  const file = image.files[0];
+  const judulInput = document.getElementById("judul");
+  const tanggalInput = document.getElementById("tanggal");
+  const waktuInput = document.getElementById("waktu");
+  const lokasiInput = document.getElementById("lokasi");
+  const deskripsiInput = document.getElementById("deskripsi");
+  const imageInput = document.getElementById("image");
 
-  reader.onload = () => {
-    kegiatan.push({
-      judul: judul.value,
-      tanggal: tanggal.value,
-      waktu: waktu.value,
-      lokasi: lokasi.value,
-      deskripsi: deskripsi.value,
-      image: reader.result
-    });
+  if (!judulInput.value || !tanggalInput.value) {
+    alert("Judul dan Tanggal wajib diisi!");
+    return;
+  }
 
-    localStorage.setItem("kegiatan", JSON.stringify(kegiatan));
-    renderKegiatan();
-  };
-
-  reader.readAsDataURL(file);
+  const file = imageInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      saveData(reader.result, judulInput, tanggalInput, waktuInput, lokasiInput, deskripsiInput);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    // Save without image
+    saveData("", judulInput, tanggalInput, waktuInput, lokasiInput, deskripsiInput);
+  }
 }
 
-function hapus(i) {
-  kegiatan.splice(i, 1);
+function saveData(imgData, j, t, w, l, d) {
+  kegiatan.push({
+    id: Date.now().toString(),
+    judul: j.value,
+    tanggal: t.value,
+    waktu: w.value,
+    lokasi: l.value,
+    deskripsi: d.value,
+    image: imgData
+  });
+
   localStorage.setItem("kegiatan", JSON.stringify(kegiatan));
   renderKegiatan();
+
+  // clear form
+  j.value = ""; t.value = ""; w.value = ""; l.value = ""; d.value = "";
+  document.getElementById("image").value = "";
+  alert("Kegiatan berhasil ditambahkan!");
 }
 
+window.hapus = function (id) {
+  if (confirm("Yakin ingin menghapus kegiatan ini?")) {
+    kegiatan = kegiatan.filter((k, index) => (k.id || index.toString()) !== id.toString());
+    localStorage.setItem("kegiatan", JSON.stringify(kegiatan));
+    renderKegiatan();
+  }
+}
+
+// =======================
+//   BERITA LOGIC
+// =======================
+
+function renderBerita() {
+  const listContainer = document.getElementById("adminBeritaList");
+  if (!listContainer) return;
+  listContainer.innerHTML = "";
+
+  if (beritaList.length === 0) {
+    listContainer.innerHTML = "<p style='color:#ccc'>Belum ada berita.</p>";
+    return;
+  }
+
+  beritaList.forEach((item, i) => {
+    const card = document.createElement("div");
+    card.className = "admin-card";
+
+    card.innerHTML = `
+      <div style="display:flex; align-items:center;">
+        <img src="${item.image || 'img/gedung kelurahan.jpg'}">
+        <div class="admin-card-info">
+          <h4>${item.judul}</h4>
+          <p>${item.tanggal}</p>
+        </div>
+      </div>
+      <button class="btn-delete" onclick="hapusBerita('${item.id || i}')">Hapus</button>
+    `;
+
+    listContainer.appendChild(card);
+  });
+}
+
+function tambahBerita() {
+  const judulInput = document.getElementById("judulBerita");
+  const tanggalInput = document.getElementById("tanggalBerita");
+  const deskripsiInput = document.getElementById("deskripsiBerita");
+  const imageInput = document.getElementById("imageBerita");
+
+  if (!judulInput.value || !tanggalInput.value || !deskripsiInput.value) {
+    alert("Judul, Tanggal, dan Deskripsi wajib diisi!");
+    return;
+  }
+
+  const file = imageInput.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = () => {
+      saveBerita(reader.result, judulInput, tanggalInput, deskripsiInput);
+    };
+    reader.readAsDataURL(file);
+  } else {
+    // Save without image
+    saveBerita("", judulInput, tanggalInput, deskripsiInput);
+  }
+}
+
+function saveBerita(imgData, j, t, d) {
+  beritaList.push({
+    id: Date.now().toString() + "_b",
+    judul: j.value,
+    tanggal: t.value,
+    deskripsi: d.value,
+    image: imgData
+  });
+
+  localStorage.setItem("berita", JSON.stringify(beritaList));
+  renderBerita();
+
+  // clear form
+  j.value = ""; t.value = ""; d.value = "";
+  document.getElementById("imageBerita").value = "";
+  alert("Berita berhasil ditambahkan!");
+}
+
+window.hapusBerita = function (id) {
+  if (confirm("Yakin ingin menghapus berita ini?")) {
+    beritaList = beritaList.filter((b, index) => (b.id || index.toString()) !== id.toString());
+    localStorage.setItem("berita", JSON.stringify(beritaList));
+    renderBerita();
+  }
+}
+
+// INIT
 renderKegiatan();
+renderBerita();
