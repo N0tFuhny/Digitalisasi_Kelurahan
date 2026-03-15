@@ -1,139 +1,142 @@
-# Digitalisasi Kelurahan — Website Template
+# 🏙️ Digitalisasi Kelurahan — Modern District Template
 
-## 📌 Deskripsi Proyek
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
+[![Status: Active](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)](https://github.com/N0tFuhny/Digitalisasi_Kelurahan)
 
-**Digitalisasi Kelurahan** adalah template website berbasis **HTML, CSS, dan JavaScript** yang dirancang sebagai *proof of concept* untuk digitalisasi informasi publik di tingkat kelurahan.
-
-Proyek ini berfokus pada penyediaan halaman informasi kegiatan yang **mudah dikelola**, **ringan**, dan **reusable**, tanpa ketergantungan backend server. Seluruh data dikelola menggunakan `localStorage`, sehingga cocok untuk demonstrasi, prototipe, dan pengembangan awal sebelum migrasi ke sistem backend.
-
-Template ini **bukan sekadar landing page**, melainkan simulasi sistem informasi publik sederhana yang mendekati kebutuhan nyata instansi pemerintahan tingkat kelurahan.
+**Digitalisasi Kelurahan** adalah template website modern yang dirancang khusus untuk membantu kantor kelurahan atau desa dalam mendigitalisasi layanan informasi publik mereka. Proyek ini mengutamakan kesederhanaan, aksesibilitas, dan kecepatan dalam implementasi.
 
 ---
 
-## 🎯 Tujuan Proyek
+## 🚀 Demo / Live Preview
 
-* Menyediakan template website kelurahan yang **mudah digunakan dan dikembangkan**
-* Mensimulasikan sistem pengelolaan informasi publik tanpa backend
-* Menjadi **proof of concept digitalisasi kelurahan**
-* Menjadi dasar untuk pengembangan sistem e-government yang lebih kompleks
+Lihat template yang sudah berjalan di sini:
+👉 **[Link Demo GitHub Pages](https://n0tfuhny.github.io/Digitalisasi_Kelurahan/)** *(Placeholder)*
+
+---
+
+## 📸 Tampilan Proyek
+
+![Preview Screenshot](https://via.placeholder.com/800x450?text=Digitalisasi+Kelurahan+Preview)
+*Contoh tampilan halaman beranda yang responsif dan modern.*
 
 ---
 
 ## ✨ Fitur Utama
 
-### 🔓 Mode Publik
+### 🏢 Website Publik
+- **Halaman Landas Modern:** Navigasi yang bersih dengan desain bertema profesional.
+- **Profil & Sejarah:** Bagian khusus untuk memperkenalkan sejarah dan profil kelurahan.
+- **Daftar Layanan Publik:** Informasi lengkap mengenai pengurusan administrasi (KTP, SKTM, dll).
+- **Portal Berita:** Halaman berita terkini untuk warga.
+- **Kegiatan Masyarakat:** Daftar kegiatan mendatang dengan sistem filter berdasarkan tanggal dan lokasi.
+- **Integrasi Google Maps:** Lokasi kantor kelurahan yang tertanam langsung di halaman kontak.
+- **Desain Responsif:** Optimal untuk diakses melalui smartphone, tablet, maupun desktop.
 
-* Menampilkan daftar informasi / kegiatan kelurahan
-* Fitur **search (pencarian teks)**
-* **Sorting** berdasarkan tanggal (terbaru / terlama)
-* **Filtering** berdasarkan tanggal dan lokasi
-* Highlight otomatis pada keyword hasil pencarian
-* Tampilan responsif untuk desktop dan mobile
-
-### 🔐 Mode Admin
-
-* Login admin berbasis `localStorage`
-* Panel admin otomatis muncul saat admin login
-* Tambah kegiatan tanpa mengubah kode
-* Upload gambar untuk setiap kegiatan
-* Hapus kegiatan langsung dari UI
-* Perbedaan tampilan jelas antara mode publik dan admin
-
-> ⚠️ **Catatan:** Mode admin pada proyek ini bersifat *client-side only* dan digunakan untuk simulasi, bukan untuk produksi.
+### 🔐 Sistem Admin
+- **Login Admin:** Akses terbatas untuk pengelola konten.
+- **Dashboard Sederhana:** Antarmuka yang mudah digunakan untuk mengelola data website.
+- **Manajemen Konten:** Tambah dan hapus berita atau kegiatan masyarakat dengan mudah.
+- **Upload Gambar:** Mendukung unggah foto untuk setiap kegiatan atau berita.
+- **Live Preview Editing:** Perubahan data dapat langsung dilihat pada sisi publik (menggunakan localStorage).
 
 ---
 
-## 🧩 Teknologi yang Digunakan
+## 🛠️ Tech Stack
 
-* **HTML5** — Struktur halaman
-* **CSS3** — Styling dan layout responsif
-* **JavaScript (Vanilla)** — Logika aplikasi
-* **LocalStorage** — Penyimpanan data sementara
-* **Feather Icons** — Ikon antarmuka
-
-Tidak menggunakan framework atau library berat untuk menjaga performa dan kesederhanaan.
+- **Struktur:** HTML5 (Semantik & Modern)
+- **Gaya:** Vanilla CSS3 (Custom Design System)
+- **Logika:** Vanilla JavaScript (ES6+)
+- **Ikon:** [Feather Icons](https://feathericons.com/)
+- **Penyimpanan:** Browser LocalStorage (No Database required!)
 
 ---
 
-## 📂 Struktur Folder
+## 📂 Struktur Proyek
 
-```
-project-root/
-│
-├── index.html          # Halaman utama
-├── informasi.html      # Halaman informasi kegiatan
-├── login.html          # Halaman login admin
+```text
+Digitalisasi_Kelurahan/
+├── index.html              # Halaman Beranda & Profil
+├── informasi.html          # Halaman Daftar Kegiatan
+├── berita.html             # Halaman Berita Kelurahan
+├── layanan.html            # Halaman Informasi Layanan Publik
+├── login.html              # Halaman Masuk Admin
+├── admin-dashboard.html    # Dashboard Pengelolaan Konten
 │
 ├── css/
-│   └── style.css       # Seluruh styling website
+│   ├── style.css           # Styling Utama & Layout
+│   └── login.css           # Styling Khusus Halaman Login
 │
 ├── js/
-│   ├── script.js       # Logika umum (login, navbar, dsb)
-│   └── informasi.js    # Logika halaman informasi kegiatan
+│   ├── config.js           # Konfigurasi Utama (Nama, Logo, Kontak)
+│   ├── script.js           # Logika Umum & Injeksi Data
+│   ├── informasi.js        # Logika Halaman Kegiatan
+│   ├── berita.js           # Logika Halaman Berita
+│   └── admin.js            # Logika Dashboard Admin
 │
-├── img/                # Gambar statis (logo, hero, dsb)
-└── README.md
+├── img/                    # Asset Gambar & Logo
+└── README.md               # Dokumentasi Proyek
 ```
 
 ---
 
-## 🚀 Cara Menjalankan Proyek
+## ⚙️ Panduan Konfigurasi
 
-1. Clone repository ini:
+Semua pengaturan utama website dapat diubah melalui file:
+`js/config.js`
 
-   ```bash
-   git clone https://github.com/N0tFuhny/digitalisasi-kelurahan.git
-   ```
-2. Buka file `index.html` menggunakan browser
-3. Login sebagai admin melalui `login.html`
-4. Kelola informasi kegiatan langsung dari halaman **Informasi**
-
-Tidak memerlukan server atau database.
-
----
-
-## 🔐 Mekanisme Admin (Singkat)
-
-* Status admin disimpan di `localStorage`
-* Jika admin login:
-
-  * Panel admin muncul
-  * Tombol hapus aktif
-  * Mode admin diterapkan pada UI
-* Jika logout:
-
-  * Seluruh fitur admin disembunyikan
+Di dalam file ini, Anda dapat menyesuaikan:
+- Nama Kelurahan & Logo
+- Deskripsi *Hero Section*
+- Konten Sejarah / Profil
+- Detail Kontak (Alamat, Email, Telepon)
+- Link Media Sosial (Instagram, Facebook, Twitter)
+- URL Embed Google Maps
+- Daftar Layanan Administrasi
 
 ---
 
-## 🛠️ Keterbatasan
+## 🏁 Memulai (Getting Started)
 
-* Tidak menggunakan backend
-* Keamanan **tidak ditujukan untuk produksi**
-* Data akan hilang jika `localStorage` dibersihkan
+### 1. Clone Repository
+```bash
+git clone https://github.com/N0tFuhny/Digitalisasi_Kelurahan.git
+cd Digitalisasi_Kelurahan
+```
 
-Proyek ini **fokus pada konsep dan arsitektur awal**, bukan sistem final.
+### 2. Jalankan Proyek
+Cukup buka file `index.html` pada browser favorit Anda. Tidak diperlukan instalasi server atau database.
+
+### 3. Akses Admin
+Untuk masuk ke dashboard pengelolaan, gunakan kredensial berikut:
+- **Username:** `admin`
+- **Password:** `123`
 
 ---
 
-## 🔮 Rencana Pengembangan (Opsional)
+## 📌 Catatan Penting
+- Proyek ini sepenuhnya berbasis **Frontend**.
+- Penyimpanan data dinamis (berita/kegiatan) menggunakan **localStorage** pada browser. Data akan hilang jika cache browser dibersihkan atau dibuka di device berbeda.
+- Sangat cocok untuk tujuan pembelajaran, prototipe pemerintahan desa, atau proyek akademik.
 
-* Integrasi backend (Laravel / Node.js / Firebase)
-* Autentikasi admin berbasis server
-* Role management (admin, operator)
-* Dashboard statistik kegiatan
-* CMS kelurahan yang lebih lengkap
+---
+
+## 🎯 Tujuan Proyek
+Proyek ini dibuat untuk menjembatani kesenjangan digital di tingkat lokal, memberikan solusi website yang cepat, murah, dan mudah dikelola tanpa memerlukan infrastruktur server yang kompleks.
+
+---
+
+## 👨‍💻 Author
+**Fuhny** — [GitHub Profile](https://github.com/N0tFuhny)
 
 ---
 
 ## 📄 Lisensi
-
-Proyek ini bersifat **open-source** dan bebas digunakan untuk keperluan akademik, demonstrasi, maupun pengembangan lanjutan.
+Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 
 ---
 
-## ✍️ Catatan Akhir
-
-Proyek ini dibuat sebagai bagian dari proses pembelajaran dan eksplorasi konsep digitalisasi layanan publik. Struktur dibuat sengaja sederhana agar mudah dipahami, dimodifikasi, dan dikembangkan lebih lanjut.
-
-Jika Anda ingin menggunakan proyek ini sebagai dasar sistem yang lebih besar, **migrasi ke backend sangat disarankan**.
+## ⭐ Dukung Proyek Ini
+Jika template ini bermanfaat bagi Anda, jangan lupa berikan **Star** pada repository ini sebagai bentuk dukungan! Terima kasih.
