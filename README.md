@@ -73,9 +73,16 @@ Digitalisasi_Kelurahan/
 │   ├── script.js           # Logika Umum & Injeksi Data
 │   ├── informasi.js        # Logika Halaman Kegiatan
 │   ├── berita.js           # Logika Halaman Berita
+│   ├── login.js            # Logika Halaman Login
 │   └── admin.js            # Logika Dashboard Admin
 │
-├── img/                    # Asset Gambar & Logo
+├── img/
+│   ├── kegiatan/           # Foto-foto Kegiatan Kelurahan
+│   ├── gedung kelurahan.jpg
+│   ├── logo kelurahan.jpg
+│   ├── preview.png
+│   └── tentang kami.jpg
+│
 └── README.md               # Dokumentasi Proyek
 ```
 
@@ -108,51 +115,58 @@ cd Digitalisasi_Kelurahan
 ### 2. Jalankan Proyek
 Cukup buka file `index.html` pada browser favorit Anda. Tidak diperlukan instalasi server atau database.
 
-### 3. Akses Admin
-Untuk masuk ke dashboard pengelolaan, gunakan kredensial berikut:
-- **Username:** `admin`
-- **Password:** `123`
+### 3. Konfigurasi Awal
+Sebelum digunakan, sesuaikan informasi kelurahan dan kredensial admin melalui file `js/config.js`:
+
+```js
+// Contoh konfigurasi di config.js
+const config = {
+  namaKelurahan: "Kelurahan ...",
+  // dst.
+}
+```
+
+> ⚠️ **Penting:** Ubah kredensial admin default di `js/config.js` sebelum proyek dipublikasikan.
 
 ---
 
-## ⚠️ Sistem Penyimpanan
+## 📌 Penyimpanan Data & Catatan Penting
 
-Template ini menggunakan localStorage pada browser sebagai simulasi database.
+- Proyek ini sepenuhnya berbasis **Frontend** — tidak memerlukan server atau instalasi apapun.
+- Data dinamis (berita & kegiatan) disimpan menggunakan **localStorage** pada browser sebagai simulasi database.
+- Data **akan hilang** jika cache browser dibersihkan atau dibuka di perangkat yang berbeda.
+- Sangat cocok untuk tujuan **pembelajaran**, **prototipe**, atau **proyek akademik**.
 
-Untuk penggunaan produksi (website yang benar-benar digunakan secara online),
-disarankan untuk menghubungkan sistem admin dengan backend atau database seperti:
+### Rekomendasi untuk Produksi
+Jika ingin digunakan secara nyata dan online, disarankan menghubungkan sistem dengan backend seperti:
 
-- MySQL
-- Firebase
-- Supabase
-- PostgreSQL
-
-Implementasi saat ini hanya mensimulasikan perilaku database
-agar template mudah dipreview dan dikustomisasi.
-
----
-
-## 📌 Catatan Penting
-- Proyek ini sepenuhnya berbasis **Frontend**.
-- Penyimpanan data dinamis (berita/kegiatan) menggunakan **localStorage** pada browser. Data akan hilang jika cache browser dibersihkan atau dibuka di device berbeda.
-- Sangat cocok untuk tujuan pembelajaran, prototipe pemerintahan desa, atau proyek akademik.
+| Pilihan | Keterangan |
+|---|---|
+| **Firebase** | Backend + database realtime, mudah diintegrasikan |
+| **Supabase** | Alternatif Firebase berbasis PostgreSQL |
+| **Node.js + Express** | Backend custom dengan database pilihan |
+| **Laravel + MySQL** | Solusi full-stack yang umum digunakan |
 
 ---
 
 ## 🎯 Tujuan Proyek
+
 Proyek ini dibuat untuk menjembatani kesenjangan digital di tingkat lokal, memberikan solusi website yang cepat, murah, dan mudah dikelola tanpa memerlukan infrastruktur server yang kompleks.
 
 ---
 
 ## 👨‍💻 Author
+
 **Fuhny** — [GitHub Profile](https://github.com/N0tFuhny)
 
 ---
 
 ## 📄 Lisensi
+
 Proyek ini dilisensikan di bawah [MIT License](LICENSE).
 
 ---
 
 ## ⭐ Dukung Proyek Ini
-Jika template ini bermanfaat bagi Anda, jangan lupa berikan **Star** pada repository ini sebagai bentuk dukungan! Terima kasih.
+
+Jika template ini bermanfaat bagi Anda, jangan lupa berikan **Star** ⭐ pada repository ini sebagai bentuk dukungan! Terima kasih.
