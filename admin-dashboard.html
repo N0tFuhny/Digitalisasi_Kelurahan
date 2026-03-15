@@ -22,19 +22,18 @@
     <!-- KEGIATAN -->
     <div class="admin-form-container">
       <h2>Tambah Kegiatan Baru</h2>
-      <br>
       <input id="judul" placeholder="Judul Kegiatan">
       <input id="tanggal" type="date">
       <input id="waktu" placeholder="Waktu (e.g. 09:00 - 12:00)">
       <input id="lokasi" placeholder="Lokasi">
       <textarea id="deskripsi" placeholder="Deskripsi Kegiatan" rows="4"></textarea>
-      <label style="color:#fff; display:block; margin-bottom: 0.5rem;">Upload Gambar:</label>
+      <label>Upload Gambar:</label>
       <input id="image" type="file" accept="image/*">
       <button class="btn-save" style="width:100%; padding:1rem;" onclick="tambahKegiatan()">Simpan Kegiatan</button>
     </div>
 
     <div>
-      <h2 style="color:#2c2c2c; margin-bottom: 1rem;">Daftar Kegiatan</h2>
+      <h2 class="admin-list-title">Daftar Kegiatan</h2>
       <div id="adminKegiatanList">
         <!-- Diisi oleh JS -->
       </div>
@@ -42,24 +41,23 @@
 
   </section>
 
-  <hr style="border: 0; border-top: 1px solid #444; margin: 2rem 7%;">
+  <hr class="admin-separator">
 
   <!-- BERITA SECTION -->
-  <section class="admin-grid" style="margin-top: 0;">
+  <section class="admin-grid" style="margin-top: 0; padding-top: 0;">
     <div class="admin-form-container">
       <h2>Tambah Berita Terbaru</h2>
-      <br>
       <input id="judulBerita" placeholder="Judul Berita">
       <input id="tanggalBerita" type="date">
       <textarea id="deskripsiBerita" placeholder="Isi Konten Berita" rows="6"></textarea>
-      <label style="color:#fff; display:block; margin-bottom: 0.5rem;">Upload Gambar Cover:</label>
+      <label>Upload Gambar Cover:</label>
       <input id="imageBerita" type="file" accept="image/*">
       <button class="btn-save" style="width:100%; padding:1rem; background-color:#826a3c;"
         onclick="tambahBerita()">Simpan Berita</button>
     </div>
 
     <div>
-      <h2 style="color:#2c2c2c; margin-bottom: 1rem;">Daftar Berita</h2>
+      <h2 class="admin-list-title">Daftar Berita</h2>
       <div id="adminBeritaList">
         <!-- Diisi oleh JS -->
       </div>

@@ -13,7 +13,7 @@
 ## 🚀 Demo / Live Preview
 
 Lihat template yang sudah berjalan di sini:
-👉 **[Link Demo GitHub Pages](https://n0tfuhny.github.io/Digitalisasi_Kelurahan/)** *(Placeholder)*
+👉 **[Lihat Demo Website](https://n0tfuhny.github.io/Digitalisasi_Kelurahan/)**
 
 ---
 

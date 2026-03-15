@@ -7,7 +7,7 @@ function renderKegiatan() {
   listContainer.innerHTML = "";
 
   if (kegiatan.length === 0) {
-    listContainer.innerHTML = "<p style='color:#ccc'>Belum ada kegiatan.</p>";
+    listContainer.innerHTML = "<p class='no-data'>Belum ada kegiatan.</p>";
     return;
   }
 
@@ -98,7 +98,7 @@ function renderBerita() {
   listContainer.innerHTML = "";
 
   if (beritaList.length === 0) {
-    listContainer.innerHTML = "<p style='color:#ccc'>Belum ada berita.</p>";
+    listContainer.innerHTML = "<p class='no-data'>Belum ada berita.</p>";
     return;
   }
 
