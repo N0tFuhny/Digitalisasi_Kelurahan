@@ -19,8 +19,7 @@ Lihat template yang sudah berjalan di sini:
 
 ## 📸 Tampilan Proyek
 
-![Preview Screenshot](https://via.placeholder.com/800x450?text=Digitalisasi+Kelurahan+Preview)
-*Contoh tampilan halaman beranda yang responsif dan modern.*
+![Preview Website](img/preview.png)
 
 ---
 
