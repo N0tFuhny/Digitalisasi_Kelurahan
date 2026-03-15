@@ -50,7 +50,7 @@ Lihat template yang sudah berjalan di sini:
 - **Gaya:** Vanilla CSS3 (Custom Design System)
 - **Logika:** Vanilla JavaScript (ES6+)
 - **Ikon:** [Feather Icons](https://feathericons.com/)
-- **Penyimpanan:** Browser LocalStorage (No Database required!)
+- **Penyimpanan:** Browser LocalStorage (untuk kebutuhan demo saja!)
 
 ---
 
