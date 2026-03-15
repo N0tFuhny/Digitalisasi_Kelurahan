@@ -115,6 +115,23 @@ Untuk masuk ke dashboard pengelolaan, gunakan kredensial berikut:
 
 ---
 
+## ⚠️ Sistem Penyimpanan
+
+Template ini menggunakan localStorage pada browser sebagai simulasi database.
+
+Untuk penggunaan produksi (website yang benar-benar digunakan secara online),
+disarankan untuk menghubungkan sistem admin dengan backend atau database seperti:
+
+- MySQL
+- Firebase
+- Supabase
+- PostgreSQL
+
+Implementasi saat ini hanya mensimulasikan perilaku database
+agar template mudah dipreview dan dikustomisasi.
+
+---
+
 ## 📌 Catatan Penting
 - Proyek ini sepenuhnya berbasis **Frontend**.
 - Penyimpanan data dinamis (berita/kegiatan) menggunakan **localStorage** pada browser. Data akan hilang jika cache browser dibersihkan atau dibuka di device berbeda.
